@@ -2,10 +2,10 @@ var mount = function (element, parentDOMNode) {
   // 1. convert element to DOM element
   var nodeElem
   if (element === 'string' || element === 'number') {
-    // 1.1 append a text node
+    // 1.1 create a text node
     nodeElem = document.createTextNode(element)
   } else {
-    // 1.2 append a DOM node
+    // 1.2 create a regular node
     nodeElem = document.createElement(element.type)
   }
 
