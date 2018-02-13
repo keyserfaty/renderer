@@ -1,0 +1,14 @@
+{
+  "name": "renderer",
+  "version": "0.0.1",
+  "description": "A DOM renderer",
+  "main": "src/index.js",
+  "author": "@keyserfaty",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "devDependencies": {
+    "jest": "^22.3.0"
+  }
+}
