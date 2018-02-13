@@ -1,6 +1,13 @@
 var mount = function (element, parentDOMNode) {
   // 1. convert element to DOM element
-  var nodeElem = document.createElement(element.type)
+  var nodeElem
+  if (element === 'string' || element === 'number') {
+    // 1.1 append a text node
+    nodeElem = document.createTextNode(element)
+  } else {
+    // 1.2 append a DOM node
+    nodeElem = document.createElement(element.type)
+  }
 
   // 2. set node attributes
   if (element.props) {
@@ -20,9 +27,11 @@ var mount = function (element, parentDOMNode) {
   }
 
   // 3. set children elements if any
-  element.children.forEach(function (child) {
-    return mount(child, nodeElem)
-  })
+  if (element.children) {
+    element.children.forEach(function (child) {
+      return mount(child, nodeElem)
+    })
+  }
 
   // 4. add reference to dom node
   element.dom = nodeElem
