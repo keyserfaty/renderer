@@ -1,4 +1,4 @@
-var mount = require('../src/mount')
+var mount = require('../src').mount
 
 describe('basic functionality', function () {
   it('should return a DOM element', function () {
