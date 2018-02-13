@@ -1,16 +1,30 @@
-var h = require('../src')
+var mount = require('../src/mount')
 
 describe('basic functionality', function () {
-  it('should return an element', function () {
-    var received = h('div')
-
-    var expected = {
+  it('should return a DOM element', function () {
+    var received = mount({
       type: 'div',
-      props: undefined,
+      props: {
+        className: 'name',
+        onclick: function (a, b) { return a + b },
+        style: 'background-color: red; color: black;',
+        autofocus: true,
+        disabled: true
+      },
       children: [],
       dom: null
+    }, '')
+
+    console.log(received)
+
+    var expected = {
+      nodeType: 'div',
+      attrs: undefined,
+      children: []
     }
 
+    expect(received).toEqual(expected)
+    expect(received).toEqual(expected)
     expect(received).toEqual(expected)
   })
 
@@ -124,38 +138,5 @@ describe('basic functionality', function () {
     }
 
     expect(received).toEqual(expected)
-  })
-})
-
-describe('props behaviour', function () {
-  it('should return a list of props', function () {
-    var received = h('div', { className: 'parent', 'style': 'background: red' })
-
-    var expected = {
-      type: 'div',
-      props: {
-        className: 'parent',
-        style: 'background: red'
-      },
-      children: [],
-      dom: null
-    }
-
-    expect(received).toEqual(expected)
-  })
-
-  it('should return events', function () {
-    var received = h('div', { onclick: function (a, b) { return a + b } } )
-
-    var expected = {
-      type: 'div',
-      props: {
-        onclick: function (a, b) { return a + b }
-      },
-      children: [],
-      dom: null
-    }
-
-    expect(received.props.onclick(1, 2)).toEqual(expected.props.onclick(1, 2))
   })
 })

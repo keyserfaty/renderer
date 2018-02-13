@@ -1,12 +1,7 @@
-var h = function (type, props) {
-  var children = Array.prototype.slice.call(arguments, h.length)
+var h = require('./h')
+var mount = require('./mount')
 
-  return {
-    type: type,
-    props: props,
-    children: children,
-    dom: null
-  }
+module.exports = {
+  h: h,
+  mount: mount
 }
-
-module.exports = h
